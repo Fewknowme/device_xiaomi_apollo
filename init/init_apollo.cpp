@@ -70,17 +70,12 @@ void set_ro_build_prop(const std::string &source, const std::string &prop,
     property_override(prop_name.c_str(), value.c_str(), false);
 }
 
-void set_device_props(const std::string fingerprint, const std::string description,
-        const std::string brand, const std::string device, const std::string model) {
+void set_device_props(const std::string brand, const std::string device, const std::string model) {
     for (const auto &source : ro_props_default_source_order) {
-        set_ro_build_prop(source, "fingerprint", fingerprint);
         set_ro_build_prop(source, "brand", brand, true);
         set_ro_build_prop(source, "device", device, true);
         set_ro_build_prop(source, "model", model, true);
     }
-
-    property_override("ro.build.fingerprint", fingerprint.c_str());
-    property_override("ro.build.description", description.c_str());
 }
 
 void vendor_load_properties() {
@@ -92,13 +87,9 @@ void vendor_load_properties() {
     property_override("ro.oem_unlock_supported", "0");
     if (product.find("std") != std::string::npos) {
         set_device_props(
-                "Xiaomi/apollo_eea/apollo:11/RKQ1.200826.002/V12.1.2.0.RJDEUXM:user/release-keys",
-                "apollo_eea-user 11 RKQ1.200826.002 V12.1.2.0.RJDEUXM release-keys",
                 "Xiaomi", "apollo", "Xiaomi Mi 10T");
     } else if (product.find("pro") != std::string::npos) {
         set_device_props(
-                "Xiaomi/apollopro_eea/apollo:11/RKQ1.200826.002/V12.1.2.0.RJDEUXM:user/release-keys",
-		"apollopro_eea-user 11 RKQ1.200826.002 V12.1.2.0.RJDEUXM release-keys",
 		"Xiaomi", "apollo", "Xiaomi Mi 10T Pro");
     }
 }
