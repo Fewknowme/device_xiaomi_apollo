@@ -8,10 +8,6 @@
     "target_path": "kernel/xiaomi/sm8250"
   },
   {
-    "repository": "device_xiaomi_apollo-kernel",
-    "target_path": "device/xiaomi/apollo-kernel"
-  },
-  {
     "repository": "vendor_xiaomi_apollo",
     "target_path": "vendor/xiaomi/apollo"
   }
