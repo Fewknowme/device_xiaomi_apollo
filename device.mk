@@ -9,7 +9,11 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
     $(LOCAL_PATH)/overlay-lineage
 
+#iorap
 include build/make/target/product/iorap_large_memory_config.mk
+
+# System properties
+-include $(LOCAL_PATH)/product_prop.mk
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
